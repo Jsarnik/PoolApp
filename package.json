@@ -3,7 +3,7 @@
   "description": "o3 World Proj",
   "main": "server.js",
   "engines": {
-    "node": "^8.0.0"
+    "node": "^5.7.0"
   },
   "scripts": {
     "heroku-prebuild": "npm install",
