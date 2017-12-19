@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="poolApp">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Pool App</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<link href="//fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet" type="text/css">
+		<link href="css/main.css" type="text/css" rel="stylesheet"/>
+
+		<script src="lib/jquery/dist/jquery.min.js"></script>
+		<script src="lib/angular/angular.min.js"></script>
+		<script src="lib/angular-toArrayFilter/toArrayFilter.js"></script>
+		<script src="lib/angular-filter/dist/angular-filter.min.js"></script>
+
+		<script type="text/javascript" src="pool-app.module.js"></script>
+		<script type="text/javascript" src="main.controller.js"></script>
+		<script type="text/javascript" src="httpService.factory.js"></script>
+		<script type="text/javascript" src="routeService.factory.js"></script>
+		<script type="text/javascript" src="gameService.factory.js"></script>
+		
+		
+	</head>
+	<body ng-controller="mainCtrl">
+		<h1>WELCOME TO THE POOL APP - WE MAKE BILLIARDS...SOMETHING ELSE...</h1>
+		<h3>Start by adding some players to the available players.</h3>
+		<h3>Select two players from the list to play each other.</h3>
+		<h3>Start Game.</h3>
+		<h3>See who wins.</h3>
+		<h3>Filter the board by stats of your choosing.</h3>
+		<h3>Repeat over and over with new or same matchups.</h3>
+        <div class="main-container">
+			<div class="selection-container">
+				<div class="new-player">
+					<input type ="text" ng-model="m.newPlayer" placeholder="player name" ng-change="m.warningMessage = null" />
+					<div class="button" ng-click="addPlayer()">Add</div>
+					<div class="message" ng-if="m.warningMessage">{{m.warningMessage}}</div>
+				</div>
+				<h2>Available PLayers:</h2>
+				<div class="leaderboard-container">
+					<div class="available-players">
+						<div class="flex-row header">
+							<div ng-click="setOrder('displayName')">Player Name</div>
+							<div ng-click="setOrder('highScore')">High Score</div>
+							<div ng-click="setOrder('gamesPlayed')">Games Played</div>
+							<div ng-click="setOrder('totalPointsScored')">Total Points</div>
+							<div ng-click="setOrder('avgScore')">Average Score</div>
+							<div>Choose Player</div>
+						</div>
+						<div class="flex-content-container">
+							<div class="flex-row content" ng-repeat="player in m.availablePlayers | toArray | orderBy: '-' + m.order track by $index" ng-class="{'selected': m.selectedPlayerIndex == $index}" ng-click="selectPlayer($index)">
+								<div ng-repeat="(key, val) in player track by $index">
+									{{val}}
+								</div>
+								<div class="button select-player" ng-if="(!m.activePlayersModel[player.displayName])" ng-click="choosePlayer(player.displayName)">Select Player</div>
+								<div class="button select-player fill" ng-if="(m.activePlayersModel[player.displayName])" ng-click="removePlayer(player.displayName)">Remove Player</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="game-container">
+				<div class="button start" ng-if="!m.gameInSession && m.playersReady" ng-click="startNewGame()">Start Game!</div>
+				<div class="scoreboard">
+					<h2>Game Board:</h2>
+					<div class="player-score-container" ng-repeat="(key, val) in m.gameObject.activePlayers track by $index">
+						<div class="player" ng-class-odd="'odd'">{{key}}</div>
+						<ul>
+							<li ng-repeat="playerScore in val.scoreTracker track by $index" ng-class="{'miss': playerScore == 'Miss!'}">
+								{{playerScore}}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+        </div>
+	</body>
+</html>

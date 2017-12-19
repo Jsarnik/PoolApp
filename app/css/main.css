@@ -1,0 +1,132 @@
+html, body {
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  background: url(http://wallpaper.pickywallpapers.com/1920x1080/billiards-pool-table-wallpaper-background.jpg) no-repeat;
+  height: 100%;
+  overflow: scroll;
+  background-size: cover;
+  color: #fff; }
+
+h1, h3 {
+  text-align: center; }
+
+input {
+  padding: 10px; }
+
+a, a:visited {
+  color: #6d9fea;
+  text-decoration: none; }
+
+a:hover, a:visited:hover {
+  color: #d47e52; }
+
+.main-container {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: 0 auto; }
+
+.selection-container, .game-container {
+  display: block;
+  margin-top: 10px; }
+
+.available-players, .new-player {
+  display: block; }
+
+.leaderboard-container {
+  display: block; }
+
+.button {
+  padding: 5px;
+  margin: 2px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center; }
+  .button.fill {
+    background: #fff;
+    color: #000; }
+  .button.start {
+    font-size: 200%;
+    background: #12dc12;
+    margin: 20px;
+    display: inherit; }
+  .button:hover {
+    box-shadow: 0px 0px 1px 0px #000; }
+
+.message {
+  color: red; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+div {
+  position: relative;
+  display: inline-block; }
+
+.available-players {
+  background: #333;
+  color: #03efff;
+  height: 350px;
+  overflow: hidden; }
+  .available-players .select-player {
+    margin-left: -10px; }
+  .available-players .flex-content-container {
+    overflow: scroll;
+    height: 300px;
+    padding: 10px; }
+  .available-players div.flex-row {
+    display: flex; }
+    .available-players div.flex-row div {
+      width: 100px; }
+    .available-players div.flex-row.header {
+      padding-left: 10px;
+      box-shadow: 0px 1px 0px 0px #000; }
+      .available-players div.flex-row.header div {
+        cursor: pointer;
+        padding: 10px 0px 10px 0px; }
+        .available-players div.flex-row.header div:hover {
+          background: #03efff;
+          color: #000; }
+    .available-players div.flex-row.content span {
+      vertical-align: middle; }
+    .available-players div.flex-row.content.selected {
+      background: #03efff;
+      color: #333; }
+    .available-players div.flex-row.content:hover {
+      color: #333;
+      background: #03efff; }
+
+.scoreboard {
+  display: block;
+  width: 100%;
+  margin: 0 auto; }
+  .scoreboard .player-score-container {
+    width: 49%;
+    position: relative;
+    float: left;
+    text-align: center;
+    border: 1px solid #000;
+    background: #333;
+    color: #000;
+    height: 400px; }
+    .scoreboard .player-score-container .player {
+      width: 100%;
+      padding: 10px 0px 10px 0px;
+      margin-bottom: 5px;
+      box-shadow: 0px 1px 2px 0px #000;
+      background: #00d9ff; }
+    .scoreboard .player-score-container ul {
+      overflow: scroll;
+      height: 350px;
+      color: #09ff00; }
+      .scoreboard .player-score-container ul li.miss {
+        color: red; }
+
+/*# sourceMappingURL=main.css.map */
