@@ -6,6 +6,8 @@
     "node": "^8.0.0"
   },
   "scripts": {
+    "heroku-prebuild": "npm install",
+    "postinstall": "grunt build",
     "start": "node server.js"
   },
   "dependencies": {
